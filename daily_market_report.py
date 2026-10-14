@@ -21,22 +21,24 @@ import yfinance as yf
 import anthropic
 
 # === CONFIG =================================================================
-TICKERS = ["VOO", "VXUS", "XLB"]          # Edit to match your portfolio
+TICKERS = ["VOO", "VXUS", "XLB", "VO"]          # Edit to match your portfolio
 
 # Your CURRENT portfolio weights as decimals (must sum to ~1.0).
 # Update these periodically as your allocation drifts with market moves.
 PORTFOLIO_WEIGHTS = {
-    "VOO":  0.6095,
-    "VXUS": 0.2457,
-    "XLB":  0.1391,
+    "VOO":  0.5826,
+    "VXUS": 0.2205,
+    "XLB":  0.1214,
+    "VO":   0.0723,
 }
 
 # Your TARGET weights (what you originally intended to hold).
 # Used to flag drift. Set equal to PORTFOLIO_WEIGHTS to disable drift commentary.
 TARGET_WEIGHTS = {
-    "VOO":  0.60,
+    "VOO":  0.55,
     "VXUS": 0.25,
-    "XLB":  0.15,
+    "XLB":  0.08,
+    "VO":   0.12,
 }
 
 # Your actual holdings. Update these when you buy more shares.
@@ -45,6 +47,7 @@ HOLDINGS = {
     "VOO":  {"shares": 10, "cost_basis": 6063.20},
     "VXUS": {"shares": 32, "cost_basis": 2461.44},
     "XLB":  {"shares": 30, "cost_basis": 1473.94},
+    "VO":   {"shares": 11, "cost_basis": 887.96},
 }
 
 LOOKBACK_DAYS = 5                          # Trading days of history to pull
@@ -246,7 +249,9 @@ def build_prompt(price_data: dict, news_data: dict) -> str:
         "first-year business school student studying finance with an interest in "
         "commodities trading. Your goal is to make today's market action legible "
         "AND to teach finance concepts through it. The reader is intellectually "
-        "curious and wants depth, not hand-holding.",
+        "curious and wants depth, not hand-holding. The reader also wants you to "
+        "look at the day before's market session activity and compare it to what "
+        "happened today, you should comment on evolution and why",
         "",
         "Write a structured report (~800 words) with these sections IN ORDER:",
         "",
