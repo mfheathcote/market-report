@@ -44,10 +44,10 @@ TARGET_WEIGHTS = {
 # Your actual holdings. Update these when you buy more shares.
 # cost_basis = total amount you paid (not per share, total $)
 HOLDINGS = {
-    "VOO":  {"shares": 10, "cost_basis": 5000.00},
-    "VXUS": {"shares": 20, "cost_basis": 1500.00},
-    "VO":   {"shares": 15, "cost_basis": 1200.00},
-    "XLB":  {"shares": 25, "cost_basis": 1000.00},
+    "VOO":  {"shares": 10, "cost_basis": 6063.20},
+    "VXUS": {"shares": 32, "cost_basis": 2461.44},
+    "XLB":  {"shares": 30, "cost_basis": 1473.94},
+    "VO":   {"shares": 11, "cost_basis": 887.96},
 }
 
 LOOKBACK_DAYS = 5                          # Trading days of history to pull
